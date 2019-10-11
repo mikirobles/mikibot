@@ -1,0 +1,6 @@
+insults.json
+opinions.json
+node_modules/
+launch.json
+.DS_Store
+.env
