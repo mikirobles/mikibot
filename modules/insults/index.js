@@ -1,32 +1,13 @@
 const insultsData = require("./insults.json");
 const helpers = require("../../helpers");
 
-const { insults, tastelessInsults, comebacks } = insultsData;
-
-function randomIntFromInterval(min, max) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+const { insults, tastelessInsults, comebacks, customComeback } = insultsData;
 
 const getComeback = user => {
-  console.log(user);
-  if (user === "Lucía") {
-    return `peruana`;
-  }
-
-  if (user === "Veke") {
-    return 'negra tóxica'
-  }
-
-  if (user === "miki") {
-    return 'mi rey';
-  }
-
-  return comebacks[randomIntFromInterval(0, comebacks.length - 1)];
+  return customComeback[user] || comebacks[helpers.randomIntFromInterval(0, comebacks.length - 1)];
 };
 
 const interpreter = ({ message, bot }) => {
-
   const mentionsBot = helpers.mentionsBot(message.content, bot)
 
   if (mentionsBot && insults.some(insult => message.content.includes(insult))) {

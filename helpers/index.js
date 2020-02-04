@@ -12,7 +12,12 @@ const says = (message, tag) => {
     return message.includes(tag);
 }
 
+function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
 module.exports = {
     mentionsBot,
-    says
+    says,
+    randomIntFromInterval
 }

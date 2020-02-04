@@ -4,3 +4,4 @@ node_modules/
 launch.json
 .DS_Store
 .env
+.vscode

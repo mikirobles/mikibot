@@ -12,17 +12,17 @@ client.on("ready", () => {
 client.on("message", message => {
   if (message.author.id === client.user.id) return;
 
-  const response = getResponseForMessage({
+  getResponseForMessage({
     message: {
       ...message,
       content: message.content.toLowerCase()
     },
     bot: client.user
+  }).then(response => {
+    if (response) {
+      message.channel.send(response);
+    }
   });
-
-  if (response) {
-    message.channel.send(response);
-  }
 });
 
 // eslint-disable-next-line no-undef
